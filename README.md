@@ -2,7 +2,7 @@
 In this application I use WebSocket to create simple chat
 
 ### Page:
-http://localhost:8080
+http://localhost:8000
 
 ### How to use in console:
-http-server
+npm run start

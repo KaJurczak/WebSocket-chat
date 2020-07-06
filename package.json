@@ -1,6 +1,13 @@
 {
-  "name": "20200705_28_Websocket chat",
+  "name": "Websocket_chat",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server"
+  },
+  "dependencies": {
+    "express": "4.17.1",
+    "nodemon": "^2.0.4"
+  }
 }
