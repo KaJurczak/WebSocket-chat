@@ -20,6 +20,7 @@ function login(event) {
     userName = userNameInput.value; //im not sure is this right place (inside function?)
     loginForm.classList.remove('show');
     messagesSection.classList.add('show');
+    socket.emit('join', userName);
   };
 };
 
