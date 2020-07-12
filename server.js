@@ -34,10 +34,13 @@ io.on('connection', (socket) => {
   });
   socket.on('join', (userName) => { 
     users.push({ name: userName, id: socket.id });
+    socket.broadcast.emit('newUser', userName);
   });
   socket.on('disconnect', () => { 
     console.log('Oh, socket ' + socket.id + ' has left');
     const index = users.findIndex(item => item.id === socket.id);
+    const user = users[index];
+    socket.broadcast.emit('removedUser', user);
     users.splice(index, 1);
 });
   console.log('I\'ve added a listener on message event \n');

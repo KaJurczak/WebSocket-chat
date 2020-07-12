@@ -31,6 +31,9 @@ function addMessage(author, content) {
   if(author == userName){
     message.classList.add('message--self');
   };
+  if(author === 'Chat Bot'){
+    message.classList.add('message--chatbot');
+  };
   message.innerHTML = 
     `<h3 class="message__author">
       ${author == userName ? 'You' : author}
@@ -58,3 +61,12 @@ loginForm.addEventListener('submit', login);
 addMessageForm.addEventListener('submit', sendMessage);
 
 socket.on('message', ({ author, content }) => addMessage(author, content)); //the same: socket.on('message', (event) => addMessage(event.author, event.content))
+
+socket.on('newUser', (userName) => { 
+  addMessage('Chat Bot', `${userName} has joined the conversation!`);
+});
+
+socket.on('removedUser', ({ name }) => { 
+  addMessage('Chat Bot', `${name} has left the conversation... :(`);
+});
+
